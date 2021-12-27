@@ -1,0 +1,1 @@
+springboot创建非web工程：实现CommandLineRunner，重写run方法

@@ -1,0 +1,1 @@
+使用springboot框架的核心配置文件application.yml或application.yaml

@@ -1,0 +1,11 @@
+springboot集成dubbo，redis，mybatis，spring，springmvc，jsp
+    a.接口工程：存放实体bean和业务接口
+    b.服务提供者：它是一个springboot框架web项目，集成mybatis，redis
+                 添加依赖：mybatis依赖，mysql驱动依赖，dubbo依赖，zookeeper依赖，redis依赖，接口工程依赖
+                 配置springboot核心配置文件：配置连接数据库
+                                           配置连接redis
+                                           配置dubbo
+    c.服务消费者：它是一个springboot框架web项目，集成jsp，dubbo
+                 添加依赖：dubbo依赖，zookeeper依赖，解析jsp页面的依赖，接口工程依赖
+                 配置springboot核心配置文件：配置视图解析器
+                                            配置dubbo

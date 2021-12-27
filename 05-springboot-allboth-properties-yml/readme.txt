@@ -1,0 +1,2 @@
+springboot框架的核心配置文件application.properties和application.yml同时存在时，
+默认读取的是application.properties配置文件

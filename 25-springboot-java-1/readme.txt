@@ -1,0 +1,1 @@
+springboot创建非web工程：直接获取ConfigurableApplicationContext

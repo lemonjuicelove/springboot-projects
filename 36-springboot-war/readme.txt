@@ -1,0 +1,1 @@
+springboot打war包部署到tomcat中，springboot核心配置文件中的上下文根和端口号失效，以本地tomcat为准

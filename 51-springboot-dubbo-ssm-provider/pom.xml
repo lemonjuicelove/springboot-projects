@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>49-springboot-parent</artifactId>
+        <groupId>com.whut.springboot</groupId>
+        <version>1.0.0</version>
+        <relativePath>../49-springboot-parent/pom.xml</relativePath>
+    </parent>
+
+    <artifactId>51-springboot-dubbo-ssm-provider</artifactId>
+
+    <!--
+        集成dubbo,zookeeper,mybatis,mysql,redis,接口工程
+    -->
+    <dependencies>
+        <!--SpringBoot框架web项目起步依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--dubbo集成springboot框架起步依赖-->
+        <dependency>
+            <groupId>com.alibaba.spring.boot</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!--zookeeper注册中心-->
+        <dependency>
+            <groupId>com.101tec</groupId>
+            <artifactId>zkclient</artifactId>
+        </dependency>
+
+        <!--MySQL驱动-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <!--MyBatis集成SpringBoot框架起步依赖-->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!--SpringBoot集成Redis起步依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <!--接口工程，自己创建的java工程的依赖不需要父工程再次管理-->
+        <dependency>
+            <groupId>com.whut.springboot</groupId>
+            <artifactId>50-springboot-dubbo-ssm-interface</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+
+        <resources>
+            <resource>
+                <!-- src/main/java中的文件都能拷贝到target/classes中 -->
+                <directory>src/main/java</directory><!--所在的目录-->
+                <includes><!--包括目录下的.properties,.xml 文件都会扫描到-->
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <!--filtering 选项 false 不启用过滤器， *.property 已经起到过滤的作用了 -->
+                <filtering>false</filtering>
+            </resource>
+
+            <resource>
+                <!-- src/main/resources中的文件都能拷贝到target/classes中  -->
+                <directory>src/main/resources</directory>
+                <includes><!--包括目录下的.properties,.xml 文件都会扫描到-->
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                    <include>**/*.txt</include>
+                </includes>
+                <!--filtering 选项 false 不启用过滤器， *.property 已经起到过滤的作用了 -->
+                <filtering>false</filtering>
+            </resource>
+
+        </resources>
+
+        <plugins>
+            <!--mybatis 代码自动生成插件-->
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.6</version>
+                <configuration>
+                    <!--配置文件的位置-->
+                    <configurationFile>GeneratorMapper.xml</configurationFile>
+                    <verbose>true</verbose>
+                    <overwrite>true</overwrite>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
